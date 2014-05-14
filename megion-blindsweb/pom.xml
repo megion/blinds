@@ -13,8 +13,9 @@
 	<packaging>war</packaging>
 
 	<properties>
-		<magnoliaHome>/home/ilya/magnoliaHome/megion-blindsweb9</magnoliaHome>
-		<authorInstance>true</authorInstance>
+		<magnoliaHome>/home/ilya/magnoliaHome/megion-blindswebPublic</magnoliaHome>
+		<authorInstance>false</authorInstance>
+		<bootstrapSamples>false</bootstrapSamples>
 	</properties>
 
 	<profiles>
@@ -125,6 +126,7 @@
 			<properties>
 				<magnoliaHome>${env.OPENSHIFT_DATA_DIR}magnoliaHome/megion-blindswebPublic</magnoliaHome>
 				<authorInstance>false</authorInstance>
+				<bootstrapSamples>false</bootstrapSamples>
 			</properties>
 		</profile>
 	</profiles>
