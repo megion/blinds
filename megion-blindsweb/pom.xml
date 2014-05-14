@@ -1,0 +1,373 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.megion</groupId>
+		<artifactId>megion-site</artifactId>
+		<version>3.0</version>
+		<relativePath>../megion-site/pom.xml</relativePath>
+	</parent>
+	<artifactId>megion-blindsweb</artifactId>
+	<name>megion-blinds: webapp</name>
+	<packaging>war</packaging>
+
+	<properties>
+		<magnoliaHome>/home/ilya/magnoliaHome/megion-blindsweb9</magnoliaHome>
+		<authorInstance>true</authorInstance>
+	</properties>
+
+	<profiles>
+		<profile>
+			<!-- magnolia dependencies then run on Jboss AS server -->
+			<id>jbossas</id>
+			<dependencies>
+
+				<dependency>
+					<groupId>info.magnolia</groupId>
+					<artifactId>magnolia-core</artifactId>
+					<exclusions>
+						<exclusion>
+							<artifactId>bcprov-jdk16</artifactId>
+							<groupId>org.bouncycastle</groupId>
+						</exclusion>
+						<exclusion>
+							<artifactId>bcpg-jdk16</artifactId>
+							<groupId>org.bouncycastle</groupId>
+						</exclusion>
+						<exclusion>
+							<artifactId>bcprov-ext-jdk16</artifactId>
+							<groupId>org.bouncycastle</groupId>
+						</exclusion>
+					</exclusions>
+				</dependency>
+
+				<dependency>
+					<groupId>com.megion</groupId>
+					<artifactId>megion-site-core</artifactId>
+					<version>3.0</version>
+					<exclusions>
+						<exclusion>
+							<artifactId>bcprov-jdk16</artifactId>
+							<groupId>org.bouncycastle</groupId>
+						</exclusion>
+						<exclusion>
+							<artifactId>bcmail-jdk16</artifactId>
+							<groupId>org.bouncycastle</groupId>
+						</exclusion>
+						<exclusion>
+							<artifactId>bcpg-jdk16</artifactId>
+							<groupId>org.bouncycastle</groupId>
+						</exclusion>
+						<exclusion>
+							<artifactId>bcprov-ext-jdk16</artifactId>
+							<groupId>org.bouncycastle</groupId>
+						</exclusion>
+					</exclusions>
+				</dependency>
+
+				<dependency>
+					<groupId>org.jboss.spec</groupId>
+					<artifactId>jboss-javaee-6.0</artifactId>
+					<version>1.0.0.Final</version>
+					<type>pom</type>
+					<scope>provided</scope>
+				</dependency>
+
+			</dependencies>
+		</profile>
+
+		<profile>
+			<!-- magnolia dependencies then run on tomcat server -->
+			<id>tomcat</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<dependencies>
+				<dependency>
+					<groupId>info.magnolia</groupId>
+					<artifactId>magnolia-core</artifactId>
+				</dependency>
+				<!-- to compensate for removed java 1.5 dep from tika and to keep all 
+					BC deps at same version -->
+				<dependency>
+					<groupId> org.bouncycastle</groupId>
+					<artifactId>bcmail-jdk16</artifactId>
+				</dependency>
+				<dependency>
+					<groupId>com.megion</groupId>
+					<artifactId>megion-site-core</artifactId>
+					<version>3.0</version>
+				</dependency>
+			</dependencies>
+		</profile>
+
+		<profile>
+			<!-- When built in OpenShift the 'openshift' profile will be used when 
+				invoking mvn. -->
+			<!-- Use this profile for any OpenShift specific customization your app 
+				will need. -->
+			<!-- By default that is to put the resulting archive into the 'webapps' 
+				folder. -->
+			<!-- http://maven.apache.org/guides/mini/guide-building-for-different-environments.html -->
+			<id>openshift</id>
+			<build>
+				<plugins>
+					<plugin>
+						<artifactId>maven-war-plugin</artifactId>
+						<version>2.1.1</version>
+						<configuration>
+							<warName>ROOT</warName>
+						</configuration>
+					</plugin>
+				</plugins>
+			</build>
+			<properties>
+				<magnoliaHome>${env.OPENSHIFT_DATA_DIR}magnoliaHome/megion-blindswebPublic</magnoliaHome>
+				<authorInstance>false</authorInstance>
+			</properties>
+		</profile>
+	</profiles>
+
+	<dependencies>
+		<!-- Dependencies on Blossom -->
+		<dependency>
+			<groupId>info.magnolia</groupId>
+			<artifactId>magnolia-module-blossom</artifactId>
+			<version>${blossomVersion}</version>
+		</dependency>
+		<dependency>
+			<groupId>info.magnolia</groupId>
+			<artifactId>magnolia-module-blossom-extension-data</artifactId>
+			<version>2.0.2</version>
+		</dependency>
+
+		<!-- Dependencies on Spring Framework -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-web</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-webmvc</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-aop</artifactId>
+		</dependency>
+
+
+		<!-- Dependencies provided Tomcat server -->
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>javax.servlet.jsp</groupId>
+			<artifactId>jsp-api</artifactId>
+			<scope>provided</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>javax.servlet.jsp.jstl</groupId>
+			<artifactId>javax.servlet.jsp.jstl-api</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>taglibs</groupId>
+			<artifactId>standard</artifactId>
+		</dependency>
+
+		<!-- STRAT Dependencies from magnolia-empty-webapp:4.5 -->
+		<dependency>
+			<groupId>info.magnolia</groupId>
+			<artifactId>magnolia-rendering</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>info.magnolia</groupId>
+			<artifactId>magnolia-templating</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>info.magnolia</groupId>
+			<artifactId>magnolia-templating-jsp</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>info.magnolia</groupId>
+			<artifactId>magnolia-templating-editor</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>info.magnolia</groupId>
+			<artifactId>magnolia-module-admininterface</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>info.magnolia</groupId>
+			<artifactId>magnolia-module-cache</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>info.magnolia</groupId>
+			<artifactId>magnolia-module-exchange-simple</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>info.magnolia</groupId>
+			<artifactId>magnolia-gui</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>info.magnolia</groupId>
+			<artifactId>magnolia-jaas</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>info.magnolia</groupId>
+			<artifactId>magnolia-module-fckeditor</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>info.magnolia</groupId>
+			<artifactId>magnolia-module-mail</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>info.magnolia</groupId>
+			<artifactId>magnolia-module-store-client</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.jackrabbit</groupId>
+			<artifactId>jackrabbit-core</artifactId>
+			<exclusions>
+				<exclusion>
+					<artifactId>bcprov-jdk15</artifactId>
+					<groupId>org.bouncycastle</groupId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<!-- JCR-3158, MAGNOLIA-3892 -->
+		<dependency>
+			<groupId>commons-dbcp</groupId>
+			<artifactId>commons-dbcp</artifactId>
+		</dependency>
+		<!-- https://issues.apache.org/jira/browse/JCR-2885 -->
+		<dependency>
+			<groupId>org.apache.tika</groupId>
+			<artifactId>tika-parsers</artifactId>
+			<exclusions>
+				<exclusion>
+					<groupId>log4j</groupId>
+					<artifactId>log4j</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>commons-logging</groupId>
+					<artifactId>commons-logging</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId> org.bouncycastle</groupId>
+					<artifactId>bcprov-jdk15</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId> org.bouncycastle</groupId>
+					<artifactId>bcmail-jdk15</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>rome</groupId>
+					<artifactId>rome</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>net.sourceforge.openutils</groupId>
+			<artifactId>openutils-log4j</artifactId>
+		</dependency>
+		<!-- tika brings in rome-0.9 that doesn't work with rome-fetcher-1.0 required 
+			for rss-aggregator-moudle. Hence we enforce rome-1.0 already here. -->
+		<dependency>
+			<groupId>rome</groupId>
+			<artifactId>rome</artifactId>
+			<version>1.0</version>
+			<exclusions>
+				<exclusion>
+					<groupId>jdom</groupId>
+					<artifactId>jdom</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit-dep</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<!-- END Dependencies from magnolia-empty-webapp:4.5 -->
+
+		<dependency>
+			<groupId>info.magnolia</groupId>
+			<artifactId>magnolia-templating-compatibility-taglib-cms</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>info.magnolia</groupId>
+			<artifactId>magnolia-module-dms</artifactId>
+			<type>jar</type>
+		</dependency>
+		<dependency>
+			<groupId>info.magnolia</groupId>
+			<artifactId>magnolia-module-standard-templating-kit</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>info.magnolia</groupId>
+			<artifactId>magnolia-module-data</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>info.magnolia</groupId>
+			<artifactId>magnolia-module-categorization</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>info.magnolia</groupId>
+			<artifactId>magnolia-module-commenting</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>info.magnolia</groupId>
+			<artifactId>magnolia-demo-project</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>info.magnolia</groupId>
+			<artifactId>magnolia-theme-pop</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>info.magnolia</groupId>
+			<artifactId>magnolia-module-groovy</artifactId>
+		</dependency>
+
+		<!-- openutils -->
+		<dependency>
+			<groupId>net.sourceforge.openutils</groupId>
+			<artifactId>openutils-mgnlcriteria</artifactId>
+			<version>5.0.1</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.eclipse.persistence</groupId>
+			<artifactId>org.eclipse.persistence.moxy</artifactId>
+			<version>2.5.1</version>
+		</dependency>
+
+	</dependencies>
+	<build>
+		<!-- build file name without version -->
+		<finalName>blinds</finalName>
+
+		<plugins>
+			<plugin>
+				<artifactId>maven-war-plugin</artifactId>
+				<version>2.1.1</version>
+				<configuration>
+					<webResources>
+						<resource>
+							<!-- this is relative to the pom.xml directory -->
+							<directory>src/main/resources</directory>
+							<filtering>true</filtering>
+							<includes>
+								<include>magnolia.properties</include>
+							</includes>
+							<targetPath>WEB-INF/config/default</targetPath>
+						</resource>
+					</webResources>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+</project>

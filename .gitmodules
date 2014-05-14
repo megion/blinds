@@ -1,0 +1,3 @@
+[submodule "megion-site"]
+	path = megion-site
+	url = https://github.com/megion/megion-site.git

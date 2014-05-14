@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE module SYSTEM "module.dtd">
+<module>
+  <name>megion-site-blinds</name>
+  <displayName>Megion-site-blinds</displayName>
+  <class>com.megion.site.blinds.setup.MegionSiteModule</class>
+  <versionHandler>com.megion.site.blinds.setup.MegionSiteVersionHandler</versionHandler>
+  <version>1.0.2</version>
+  <dependencies>
+    <dependency>
+      <name>core</name>
+      <version>4.1/*</version>
+    </dependency>
+    <dependency>
+      <name>adminInterface</name>
+      <version>4.1/*</version>
+    </dependency>
+    <dependency>
+      <name>templating</name>
+      <version>4.1/*</version>
+    </dependency>
+    <dependency>
+      <name>fckEditor</name>
+      <version>4.1/*</version>
+    </dependency>
+    <dependency>
+      <name>blossom</name>
+      <version>2.0/*</version>
+    </dependency>
+    <dependency>
+      <name>categorization</name>
+      <version>1.2/*</version>
+    </dependency>
+    <dependency>
+      <name>mail</name>
+      <version>4.5.2/*</version>
+      <optional>true</optional>
+    </dependency>
+  </dependencies>
+</module>
