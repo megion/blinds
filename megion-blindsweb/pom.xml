@@ -13,9 +13,9 @@
 	<packaging>war</packaging>
 
 	<properties>
-		<magnoliaHome>/home/ilya/magnoliaHome/megion-blindswebPublic</magnoliaHome>
-		<authorInstance>false</authorInstance>
-		<bootstrapSamples>false</bootstrapSamples>
+		<magnoliaHome>/home/ilya/magnoliaHome/megion-blindsweb</magnoliaHome>
+		<authorInstance>true</authorInstance>
+		<bootstrapSamples>true</bootstrapSamples>
 	</properties>
 
 	<profiles>
