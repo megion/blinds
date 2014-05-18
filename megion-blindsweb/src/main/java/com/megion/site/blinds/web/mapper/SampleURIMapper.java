@@ -11,9 +11,9 @@ import javax.servlet.http.HttpServletRequest;
 public class SampleURIMapper {
 
     public String mapper(String uri, HttpServletRequest request) {
-        /*if (uri.equals("/")) {
+        if (uri.equals("/")) {
             return "/home";
-        }*/
+        }
         return null;
     }
 }

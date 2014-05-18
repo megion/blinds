@@ -24,8 +24,16 @@
 					menuCssClass = menuCssClass + " selected";
 				%>
 			</c:if>
-		<li class="<%=menuCssClass%>"><a
-			href="<c:url value="${menu.URL}" />">${menu.name}</a></li>
+		<li class="<%=menuCssClass%>">
+		    <c:choose>
+				<c:when test="${not empty menu.replacementURL}">
+					<a href="<c:url value="${menu.replacementURL}" />">${menu.name}</a>
+				</c:when>
+				<c:otherwise>
+					<a href="<c:url value="${menu.URL}" />">${menu.name}</a>
+				</c:otherwise>
+			</c:choose>
+		</li>
 			
 		<%
 			counter++;

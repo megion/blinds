@@ -34,9 +34,9 @@
 							<jsp:include page="../includes/subMenu.jsp"></jsp:include>
 							<div id="main">
 								<cms:area name="tableCenterArea"
-									components="" />
+									components="standard-templating-kit:components/features/stkImageGallery,megion-site:components/geoMap,megion-site:components/fulltextSearch,megion-site:components/contactForm,standard-templating-kit:components/content/stkTextImage" />
 								<cms:area name="columnsCenterArea"
-									components="" />
+									components="standard-templating-kit:components/features/stkImageGallery,megion-site:components/geoMap,megion-site:components/fulltextSearch,megion-site:components/contactForm,standard-templating-kit:components/content/stkTextImage" />
 							</div>
 							<!-- end body -->
 						</div>
