@@ -21,24 +21,15 @@
 								<div id="ms">
 									<jsp:include page="../includes/topMenu.jsp"></jsp:include>
 								</div>
-								<div class="lnsep"></div>
 							</div>
 						</div>
 					</div>
 					<div id="center_col" style="visibility: visible;">
-						<span id="taw" style="margin-right: 0pt;">
-							<div></div>
-						</span>
-						<div id="res" class="med">
-							<!-- start body -->
-							<jsp:include page="../includes/subMenu.jsp"></jsp:include>
-							<div id="main">
-								<cms:area name="tableCenterArea"
-									components="standard-templating-kit:components/features/stkImageGallery,megion-site:components/geoMap,megion-site:components/fulltextSearch,megion-site:components/contactForm,standard-templating-kit:components/content/stkTextImage" />
-								<cms:area name="columnsCenterArea"
-									components="standard-templating-kit:components/features/stkImageGallery,megion-site:components/geoMap,megion-site:components/fulltextSearch,megion-site:components/contactForm,standard-templating-kit:components/content/stkTextImage" />
-							</div>
-							<!-- end body -->
+						<div id="main">
+							<cms:area name="tableCenterArea"
+								components="standard-templating-kit:components/features/stkImageGallery,megion-site:components/geoMap,megion-site:components/fulltextSearch,megion-site:components/contactForm,standard-templating-kit:components/content/stkTextImage" />
+							<cms:area name="columnsCenterArea"
+								components="standard-templating-kit:components/features/stkImageGallery,megion-site:components/geoMap,megion-site:components/fulltextSearch,megion-site:components/contactForm,standard-templating-kit:components/content/stkTextImage" />
 						</div>
 					</div>
 				</div>

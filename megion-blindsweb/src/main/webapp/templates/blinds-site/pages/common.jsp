@@ -21,17 +21,13 @@
 								<div id="ms">
 									<jsp:include page="../includes/topMenu.jsp"></jsp:include>
 								</div>
-								<div class="lnsep"></div>
 							</div>
 						</div>
 					</div>
 					<div id="center_col" style="visibility: visible;">
-						<span id="taw" style="margin-right: 0pt;">
-							<div></div>
-						</span>
 						<div id="res" class="med">
 							<!-- start body -->
-							<jsp:include page="../includes/subMenu.jsp"></jsp:include>
+							
 							<div id="main">
 								<div class="page-center-area">
 									<h1>${content.title}</h1>
