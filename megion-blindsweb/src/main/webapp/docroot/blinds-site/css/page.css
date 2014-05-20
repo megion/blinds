@@ -145,6 +145,7 @@ ul.subnavigation {
 	display: block;
 	font-weight: normal;
 	font-size: small;
+	color: black !important;
 }
 
 .subnavigation li a:hover { /* border-color: #fff; */
@@ -152,7 +153,7 @@ ul.subnavigation {
 }
 
 .subnavigation li.selected a { /* color: #e0e0e0; */
-	color: #F57129;
+	color: #F57129 !important;
 	font-weight: bold;
 }
 
