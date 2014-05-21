@@ -8,6 +8,7 @@ import info.magnolia.module.blossom.dialog.TabBuilder;
 import java.util.List;
 
 import javax.jcr.Node;
+import javax.jcr.PathNotFoundException;
 import javax.jcr.RepositoryException;
 import javax.servlet.http.HttpServletRequest;
 import javax.xml.bind.JAXBException;
@@ -21,9 +22,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.megion.site.core.model.MenuItem;
 import com.megion.site.core.model.areas.column.ColumnArea;
+import com.megion.site.core.model.areas.promo.PromoArea;
 import com.megion.site.core.model.areas.table.TableArea;
 import com.megion.site.core.service.PageService;
 import com.megion.site.core.service.area.ColumnAreaService;
+import com.megion.site.core.service.area.PromoAreaService;
 import com.megion.site.core.service.area.TableAreaService;
 
 /**
@@ -83,6 +86,28 @@ public class HomeTemplate {
 			model.put("columnArea", columnArea);
 
 			return "areas/columnArea.jsp";
+		}
+	}
+	
+	@Area("promosArea")
+	@Controller
+	public static class PromosArea {
+		@Autowired
+		PromoAreaService promoAreaService;
+
+		@TabFactory("Content")
+		public void contentTab(TabBuilder tab) {
+			promoAreaService.addPromoAreaDialogControls(tab);
+		}
+
+		@RequestMapping("/homeTemplate/promoArea")
+		public String render(Node page, ModelMap model,
+				HttpServletRequest request) throws PathNotFoundException,
+				RepositoryException {
+			PromoArea promoArea = promoAreaService.getPromoArea(page);
+			promoArea.setRelativeStaticPromosPath("../includes/staticPromos.jsp");
+			model.put("promoArea", promoArea);
+			return "areas/promosArea.jsp";
 		}
 	}
 

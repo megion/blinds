@@ -9,33 +9,29 @@
 <jsp:include page="../includes/pageHeader.jsp"></jsp:include>
 </head>
 <body>
-	<div>
-		<div id="cnt">
-			<div id="appbar"></div>
-			<div class="mw">
-				<div id="rcnt" style="clear: both; position: relative;">
-					<div>
-						<div id="leftnavc">
-							<div style="position: absolute; top: 1px; width: 132px;"
-								id="leftnav">
-								<div id="ms">
-									<jsp:include page="../includes/topMenu.jsp"></jsp:include>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div id="center_col" style="visibility: visible;">
-						<div id="main">
-							<cms:area name="tableCenterArea"
-								components="standard-templating-kit:components/features/stkImageGallery,megion-site:components/geoMap,megion-site:components/fulltextSearch,megion-site:components/contactForm,standard-templating-kit:components/content/stkTextImage" />
-							<cms:area name="columnsCenterArea"
-								components="standard-templating-kit:components/features/stkImageGallery,megion-site:components/geoMap,megion-site:components/fulltextSearch,megion-site:components/contactForm,standard-templating-kit:components/content/stkTextImage" />
-						</div>
-					</div>
+    <jsp:include page="../includes/topLayout.jsp"></jsp:include>
+    
+	<div class="content">
+		<div id="main">
+			<div class="left-area">
+				<div class="menu-block">
+					<jsp:include page="../includes/topMenu.jsp"></jsp:include>
 				</div>
-				<div id="foot" class="tsf-p"></div>
+				<div class="promo-block">
+					<cms:area name="promosArea"
+						components="megion-site:components/textPromo,megion-site:components/promo,standard-templating-kit:components/content/stkTextImage" />
+				</div>
+			</div>
+			<div class="center-area">
+				<cms:area name="tableCenterArea"
+					components="standard-templating-kit:components/features/stkImageGallery,megion-site:components/geoMap,megion-site:components/fulltextSearch,megion-site:components/contactForm,standard-templating-kit:components/content/stkTextImage" />
+				<cms:area name="columnsCenterArea"
+					components="standard-templating-kit:components/features/stkImageGallery,megion-site:components/geoMap,megion-site:components/fulltextSearch,megion-site:components/contactForm,standard-templating-kit:components/content/stkTextImage" />
 			</div>
 		</div>
 	</div>
+	
+	<jsp:include page="../includes/footer.jsp"></jsp:include>
+
 </body>
 </html>
