@@ -10,6 +10,7 @@ import info.magnolia.module.DefaultModuleVersionHandler;
 import info.magnolia.module.InstallContext;
 import info.magnolia.module.delta.AbstractTask;
 import info.magnolia.module.delta.DeltaBuilder;
+import info.magnolia.module.delta.ModuleDependencyBootstrapTask;
 import info.magnolia.module.delta.Task;
 import info.magnolia.module.delta.TaskExecutionException;
 
@@ -73,6 +74,7 @@ public class MegionSiteVersionHandler extends DefaultModuleVersionHandler {
 	@Override
     protected List<Task> getExtraInstallTasks(InstallContext installContext) {
         List<Task> tasks = new ArrayList<Task>();
+        tasks.add(new ModuleDependencyBootstrapTask("mail"));
         tasks.add(addReadRoleToAnonymousUser);
         return tasks;
     }
