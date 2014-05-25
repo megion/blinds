@@ -89,6 +89,9 @@
 <link
 	href="${pageContext.request.contextPath}/docroot/blinds-site/css/page.css"
 	rel="stylesheet" type="text/css" />
+<link
+	href="${pageContext.request.contextPath}/docroot/blinds-site/css/components.css"
+	rel="stylesheet" type="text/css" />
 
 
 <script type="text/javascript"
