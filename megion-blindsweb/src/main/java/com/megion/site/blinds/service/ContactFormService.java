@@ -4,8 +4,8 @@ import info.magnolia.module.blossom.dialog.TabBuilder;
 
 import javax.jcr.Node;
 
+import com.megion.site.blinds.model.form.ContactForm;
 import com.megion.site.core.enums.TabNumber;
-import com.megion.site.core.model.ContactForm;
 
 public interface ContactFormService {
 

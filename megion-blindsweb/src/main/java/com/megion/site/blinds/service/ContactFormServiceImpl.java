@@ -8,8 +8,8 @@ import javax.jcr.Node;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.megion.site.blinds.model.form.ContactForm;
 import com.megion.site.core.enums.TabNumber;
-import com.megion.site.core.model.ContactForm;
 import com.megion.site.core.service.TemplatingService;
 
 @Service
