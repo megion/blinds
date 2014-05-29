@@ -12,4 +12,27 @@
 input.captcha-input {font-size: 2.4em;vertical-align: middle;width: 6em;}
 .captcha-element {height: 74px;line-height: 74px;float: left;}
 
+input[type="text"], input[type="email"], input[type="password"] {
+    -moz-box-sizing: border-box;
+    border: 1px solid #AEA79F;
+    display: block;
+    padding: 0.3em;
+    width: 100%;
+}
+.ie8 input[type="text"], .ie8 input[type="email"], .ie8 input[type="password"] {
+    line-height: 1;
+}
+.ie8 input[type="password"] {
+    font-family: Arial,sans-serif;
+}
+.haserrors input[type="text"], .haserrors input[type="email"], .haserrors input[type="password"] {
+    border: 1px solid #DF382C;
+}
+form .error {
+    background: none repeat scroll 0 0 rgba(0, 0, 0, 0);
+    color: #DF382C;
+    font-size: 14px;
+    font-weight: bold;
+}
+
 
