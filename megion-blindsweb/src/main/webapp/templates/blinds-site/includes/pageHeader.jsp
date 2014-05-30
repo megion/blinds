@@ -97,4 +97,4 @@
 <script type="text/javascript"
 	src="${pageContext.request.contextPath}/docroot/blinds-site/js/general-utils.js"></script>
 <script type="text/javascript"
-	src="${pageContext.request.contextPath}/docroot/blinds-site/js/popupMaster.js"></script>
+	src="${pageContext.request.contextPath}/docroot/blinds-site/js/jquery.maskedinput.js"></script>

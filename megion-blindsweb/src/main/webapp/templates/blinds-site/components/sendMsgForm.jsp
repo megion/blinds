@@ -3,38 +3,40 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
+<%
+	String localUuid = "" +  System.currentTimeMillis();
+%>
+
 <c:if test="${errorMessage!=null}">
 	<div class="errorMessage">${errorMessage}</div>
 </c:if>
 
 <div class="sendMsgForm">
-	<form:form commandName="formUI" method="POST"
-		action="?">
+	<form:form commandName="formData" method="POST" action="?">
 		<blossom:pecid-input />
-		<label class="form-input-name">Имя, фамилия</label>
-		<span class="required-marker">*</span>
-		<br />
-		<form:input path="name" cssClass="textinput" />&nbsp;<span
-			class="form-input-error"><form:errors path="name" /></span>
-		<br />
-		<span class="form-input-name">Ваш адрес E-mail</span>
-		<span class="required-marker">*</span>
-		<br />
-		<form:input path="email" cssClass="textinput" />&nbsp;<span
-			class="form-input-error"><form:errors path="email" /></span>
-		<br />
-		<span class="form-input-name">Тема запроса</span>
-		<br />
-		<form:input path="messageTitle" cssClass="textinput" />&nbsp;<span
-			class="form-input-error"><form:errors path="messageTitle" /></span>
-		<br />
-		<span class="form-input-name">Текст запроса</span>
-		<span class="required-marker">*</span>&nbsp;<span
-			class="form-input-error"><form:errors path="message" /></span>
-		<br />
-		<form:textarea path="message" cols="60" rows="5" cssClass="textinput" />
-		<br />
-		<br />
+		<div class="form-row">
+			<label class="control-label">Имя</label> <span
+				class="required-marker">*</span>
+
+			<form:input path="name" />
+			&nbsp;<span class="form-input-error"><form:errors path="name" /></span>
+		</div>
+
+		<div class="form-row">
+			<label class="control-label">Телефон</label> <span
+				class="required-marker">*</span>
+
+			<form:input path="phone"
+				id="phone-<%=localUuid%>" />
+			&nbsp;<span class="form-input-error"><form:errors path="phone" /></span>
+		</div>
+
+		<div class="form-row">
+			<label class="control-label">Текст</label> <span
+				class="required-marker">*</span> &nbsp;<span
+				class="form-input-error"><form:errors path="message" /></span>
+			<form:textarea path="message" cols="60" rows="5" cssClass="textinput" />
+		</div>
 
 		<div class="captcha-label">Введите символы:</div>
 		<div style="margin: 0 0 0.5em">
@@ -48,21 +50,25 @@
 					<img src="${getCaptchaResult.url}" />
 				</c:if>
 			</div>
-			<div class="captcha-element" style="width: 10px;">
-			</div>
+			<div class="captcha-element" style="width: 10px;"></div>
 			<div class="captcha-element">
-				<form:input path="captchaText" cssClass="captcha-input" autocomplete="off" />
+				<form:input path="captchaText" cssClass="captcha-input"
+					autocomplete="off" />
 				<c:if test="${checkSpamResult!=null}">
 					<form:input path="checkSpamId" type="hidden"
 						value="${checkSpamResult.id}" />
 				</c:if>
 			</div>
-			
+
 		</div>
-
-
-
-		<input type="submit" value="Отправить" />
+		
+		<button type="submit">Отправить</button>
 
 	</form:form>
 </div>
+
+<script type="text/javascript">
+    var phoneId = "#phone-" + "<%=localUuid%>";
+	//jQuery().mask.definitions['~']='[+-]';
+	jQuery(phoneId).mask('(999) 999-9999');
+</script>

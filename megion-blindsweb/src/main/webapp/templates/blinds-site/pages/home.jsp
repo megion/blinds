@@ -24,9 +24,9 @@
 			</div>
 			<div class="center-area">
 				<cms:area name="tableCenterArea"
-					components="standard-templating-kit:components/features/stkImageGallery,megion-site:components/geoMap,megion-site:components/fulltextSearch,megion-site:components/contactForm,standard-templating-kit:components/content/stkTextImage" />
+					components="standard-templating-kit:components/features/stkImageGallery,megion-site:components/geoMap,standard-templating-kit:components/content/stkTextImage" />
 				<cms:area name="columnsCenterArea"
-					components="standard-templating-kit:components/features/stkImageGallery,megion-site:components/geoMap,megion-site:components/fulltextSearch,megion-site:components/contactForm,standard-templating-kit:components/content/stkTextImage" />
+					components="standard-templating-kit:components/features/stkImageGallery,megion-site:components/geoMap,standard-templating-kit:components/content/stkTextImage" />
 			</div>
 		</div>
 	</div>

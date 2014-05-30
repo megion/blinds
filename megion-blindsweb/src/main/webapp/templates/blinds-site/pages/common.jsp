@@ -28,7 +28,7 @@
 				<h1>${content.title}</h1>
 				-->
 				<cms:area name="centerArea"
-					components="standard-templating-kit:components/features/stkImageGallery,megion-site:components/geoMap,megion-site:components/fulltextSearch,megion-site:components/contactForm,standard-templating-kit:components/content/stkTextImage" />
+					components="standard-templating-kit:components/features/stkImageGallery,standard-templating-kit:components/content/stkTextImage,blinds-site:components/sendMsg,megion-site:components/geoMap" />
 			</div>
 		</div>
 	</div>

@@ -35,7 +35,7 @@ import com.megion.site.core.service.YandexCaptchaService;
  * Форма послать сообщение
  */
 @Controller
-@Template(title = "Contact form", id = "blinds-site:components/sendMsg")
+@Template(title = "Send message form", id = "blinds-site:components/sendMsg")
 @TemplateDescription("Отправить сообщение")
 public class SendMsgFormComponent {
 
@@ -51,9 +51,9 @@ public class SendMsgFormComponent {
 	@Autowired
 	private MailService mailService;
 
-	@RequestMapping("/contactForm")
+	@RequestMapping("/sendMsgForm")
 	public String handleRequest(ModelMap model,
-			@ModelAttribute SendMsgFormUI formUI,
+			@ModelAttribute(value="formData") SendMsgFormUI formData,
 			BindingResult result, HttpServletRequest request, Node node) {
 
 		SendMsgForm formDialog = sendMsgFormService.getSendMsgForm(node);
@@ -64,9 +64,9 @@ public class SendMsgFormComponent {
 			// получения id проверки. В будущем можно избавить добросовестных
 			// пользователей от ввода Captcha.
 			CheckSpam checkSpam = new CheckSpam(
-					formUI.getName(),
+					formData.getName(),
 					"Сообщение",
-					formUI.getMessage());
+					formData.getMessage());
 			CheckSpamResult checkSpamResult = yandexCaptchaService.checkSpam(
 					checkSpam, formDialog.getYandexKey(),
 					request);
@@ -81,14 +81,14 @@ public class SendMsgFormComponent {
 				// проверяем ввод пользователем данных
 				new SendMsgFormValidator(yandexCaptchaService,
 						formDialog.getYandexKey()).validate(
-						formUI, result);
+						formData, result);
 				if (result.hasErrors()) {
 					return "components/sendMsgForm.jsp";
 				}
 
 				// send mail
 				Map<String, Object> params = new HashMap<String, Object>();
-				params.put("notification", formUI);				
+				params.put("notification", formData);				
 				EmailHeader mailHeader = new EmailHeader();
 				mailHeader.setToList(formDialog.getToEmailList());
 				mailHeader.setFrom("test@mail.ru");

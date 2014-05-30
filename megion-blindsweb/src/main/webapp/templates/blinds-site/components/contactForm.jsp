@@ -12,7 +12,7 @@
 </c:if>
 
 <div class="contactForm">
-	<form:form commandName="contactFormNotification" method="POST"
+	<form:form commandName="contactFormUI" method="POST"
 		action="?">
 		<blossom:pecid-input />
 		<span class="form-input-name">Имя, фамилия</span>
