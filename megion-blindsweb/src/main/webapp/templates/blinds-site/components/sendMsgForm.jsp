@@ -11,7 +11,7 @@
 	<div class="errorMessage">${errorMessage}</div>
 </c:if>
 
-<div class="sendMsgForm">
+<div class="sendMsgForm" id="formContainer-<%=localUuid%>">
 	<form:form commandName="formData" method="POST" action="?">
 		<blossom:pecid-input />
 		<div class="form-row">
@@ -26,9 +26,9 @@
 			<label class="control-label">Телефон</label> <span
 				class="required-marker">*</span>
 
-			<form:input path="phone"
-				id="phone-<%=localUuid%>" />
+			<form:input path="phone" />
 			&nbsp;<span class="form-input-error"><form:errors path="phone" /></span>
+		
 		</div>
 
 		<div class="form-row">
@@ -68,7 +68,8 @@
 </div>
 
 <script type="text/javascript">
-    var phoneId = "#phone-" + "<%=localUuid%>";
-	//jQuery().mask.definitions['~']='[+-]';
-	jQuery(phoneId).mask('(999) 999-9999');
+    var containerId = "#formContainer-" + "<%=localUuid%>";
+    var form = jQuery(containerId).find("form");
+    var phone = form.find("input[name='phone']");
+	phone.maskedInput('(999) 999-9999', {definitions: {'~': '[+-]'}});
 </script>

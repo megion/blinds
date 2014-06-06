@@ -13,7 +13,7 @@
 	<packaging>war</packaging>
 
 	<properties>
-		<magnoliaHome>/home/ilya/workspaces/my/blinds-content</magnoliaHome>
+		<magnoliaHome>/home/ilya/workspaces/blinds/blinds-content</magnoliaHome>
 		<authorInstance>true</authorInstance>
 		<bootstrapSamples>true</bootstrapSamples>
 	</properties>
