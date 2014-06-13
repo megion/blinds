@@ -3,21 +3,44 @@
 /* --- Contact form --- */
 .errorMessage {margin: 10px 0; padding: 8px 6px; background-color: #ffafaf; border-color: #db5757;-moz-border-radius: 4px; -webkit-border-radius: 4px; border-radius: 4px;}
 .successMessage {margin: 10px 0; padding: 8px 6px;background-color: #AFDAFF; border-color: #57B7DB;-moz-border-radius: 4px; -webkit-border-radius: 4px; border-radius: 4px;}
-.contactForm input.textinput[type="text"] {width: 400px; margin-bottom:8px; padding: 2px; font-size: 13px; line-height: 1.16em;}
-.form-input-name {color: #666666;}
-.form-input-error {color: #BB0000;}
 .required-marker {color: #DD4B39; margin: 0 6px 0 2px;}
-.captcha-label {font-size: 16px;margin: 0 0 0.5em;}
+.captcha-label {font-size: 16px;margin: 0 0 0.5em; color: black;}
 .captcha-content {content: " ";display: table; clear: both;}
 input.captcha-input {font-size: 2.4em;vertical-align: middle;width: 6em;}
 .captcha-element {height: 74px;line-height: 74px;float: left;}
 
-input[type="text"], input[type="email"], input[type="password"] {
+
+.control-row {
+	color: #666666;
+    margin: 0 0 0.625rem;
+}
+.control-label {
+	color: #666666;
+    margin: 0 0 0.225rem;
+}
+.control-input {
+	margin: 0 0 0.225rem;
+}
+.sendMsgForm .control-input {
+	width: 325px;
+}
+.control-error {
+	color: #BB0000;
+    font-weight: bold;
+    margin: 0 0 0.625rem;
+}
+.control-input input[type="text"],
+.control-input input[type="email"],
+.control-input input[type="password"] {
     -moz-box-sizing: border-box;
-    border: 1px solid #AEA79F;
-    display: block;
+    box-sizing: border-box;
     padding: 0.3em;
+    margin: 0;
     width: 100%;
+    font-size: 1em;
+}
+.control-input input[type="text"].phone-input {
+	width: 140px;
 }
 .ie8 input[type="text"], .ie8 input[type="email"], .ie8 input[type="password"] {
     line-height: 1;
@@ -25,14 +48,11 @@ input[type="text"], input[type="email"], input[type="password"] {
 .ie8 input[type="password"] {
     font-family: Arial,sans-serif;
 }
-.haserrors input[type="text"], .haserrors input[type="email"], .haserrors input[type="password"] {
-    border: 1px solid #DF382C;
-}
-form .error {
-    background: none repeat scroll 0 0 rgba(0, 0, 0, 0);
-    color: #DF382C;
-    font-size: 14px;
-    font-weight: bold;
-}
 
-
+.submit-button {
+    font-size: 1.2rem;
+    line-height: 2rem;
+    padding: 0.2rem 1rem;
+    position: relative;
+    vertical-align: baseline;
+}

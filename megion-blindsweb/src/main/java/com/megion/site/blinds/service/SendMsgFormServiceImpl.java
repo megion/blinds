@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.megion.site.blinds.model.form.SendMsgForm;
+import com.megion.site.core.service.DialogService;
 import com.megion.site.core.service.TemplatingService;
 
 @Service
@@ -16,6 +17,8 @@ public class SendMsgFormServiceImpl implements SendMsgFormService {
 
 	@Autowired
 	private TemplatingService templatingService;
+	@Autowired
+	private DialogService dialogService;
 
 	@Override
 	public void addSendMsgFormDialogControls(TabBuilder tabBuilder) {
@@ -28,7 +31,7 @@ public class SendMsgFormServiceImpl implements SendMsgFormService {
 						"Ключ API yandex для проверки Captcha. Подробнее http://api.yandex.ru/cleanweb/")
 				.setRequired(true);
 
-		tabBuilder.addFckEditor("successText",
+		dialogService.addFckEditor(tabBuilder, "successText",
 				"Текст успешности отправки сообщения", "");
 	}
 

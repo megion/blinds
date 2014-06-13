@@ -31,13 +31,13 @@ public class SendMsgFormValidator implements Validator {
 	@Override
 	public void validate(Object target, Errors errors) {
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "name", "required",
-				"Имя должно быть заполнено.");
+				"Пожалуйста, укажите имя");
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "phone", "required",
-				"Имя должно быть заполнено.");
+				"Пожалуйста, укажите телефон");
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "message",
-				"required", "Текст сообщения должен быть заполнен.");
+				"required", "Пожалуйста, укажите текст сообщения");
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "captchaText",
-				"required", "Необходимо ввести символы.");
+				"required", "Необходимо ввести символы");
 
 		SendMsgFormUI formUI = (SendMsgFormUI) target;
 		try {
@@ -46,7 +46,7 @@ public class SendMsgFormValidator implements Validator {
 						formUI, yandexKey);
 				if (!isValidCaptcha) {
 					errors.rejectValue("captchaText", "required", null,
-							"Вы неверно ввели символы. Попробуйте еще раз.");
+							"Вы неверно ввели символы. Попробуйте еще раз");
 				}
 			}
 		} catch (Exception e) {
