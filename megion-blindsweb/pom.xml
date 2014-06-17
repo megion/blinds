@@ -13,7 +13,6 @@
 	<packaging>war</packaging>
 
 	<properties>
-		<magnoliaHome>/home/ilya/workspaces/blinds/blinds-content</magnoliaHome>
 		<authorInstance>true</authorInstance>
 		<bootstrapSamples>true</bootstrapSamples>
 	</properties>
@@ -101,6 +100,12 @@
 					<version>3.0</version>
 				</dependency>
 			</dependencies>
+
+			<build>
+				<filters>
+				    <filter>local.properties</filter>
+				</filters>
+			</build>
 		</profile>
 
 		<profile>
@@ -369,6 +374,7 @@
 					</webResources>
 				</configuration>
 			</plugin>
+
 		</plugins>
 	</build>
 
