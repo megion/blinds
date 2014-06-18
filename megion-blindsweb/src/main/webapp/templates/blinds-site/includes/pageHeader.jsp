@@ -98,3 +98,7 @@
 	src="${pageContext.request.contextPath}/docroot/blinds-site/js/general-utils.js"></script>
 <script type="text/javascript"
 	src="${pageContext.request.contextPath}/docroot/megion-site-core/js/jquery.maskedinput.js"></script>
+<script type="text/javascript"
+	src="${pageContext.request.contextPath}/docroot/megion-site-core/js/jquery-tools/overlay.js"></script>
+<script type="text/javascript"
+	src="${pageContext.request.contextPath}/docroot/megion-site-core/js/jquery-tools/overlay.apple.js"></script>
