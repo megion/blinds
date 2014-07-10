@@ -20,7 +20,7 @@
 				</div>
 				<div class="promo-block">
 					<cms:area name="promosArea"
-						components="megion-site:components/textPromo,megion-site:components/promo,standard-templating-kit:components/content/stkTextImage" />
+						components="megion-site:components/textPromo,megion-site:components/promo,standard-templating-kit:components/content/stkTextImage,megion-site:components/imageOverlay" />
 				</div>
 			</div>
 			<div class="center-area">
@@ -28,7 +28,7 @@
 				<h1>${content.title}</h1>
 				-->
 				<cms:area name="centerArea"
-					components="standard-templating-kit:components/features/stkImageGallery,standard-templating-kit:components/content/stkTextImage,blinds-site:components/sendMsg,megion-site:components/geoMap" />
+					components="standard-templating-kit:components/features/stkImageGallery,standard-templating-kit:components/content/stkTextImage,blinds-site:components/sendMsg,megion-site:components/geoMap,megion-site:components/imageOverlay" />
 			</div>
 		</div>
 	</div>

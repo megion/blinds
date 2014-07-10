@@ -87,6 +87,9 @@
 	href="${pageContext.request.contextPath}/docroot/megion-site-core/css/areas.css"
 	rel="stylesheet" type="text/css" />
 <link
+	href="${pageContext.request.contextPath}/docroot/megion-site-core/css/overlay.css"
+	rel="stylesheet" type="text/css" />
+<link
 	href="${pageContext.request.contextPath}/docroot/blinds-site/css/page.css"
 	rel="stylesheet" type="text/css" />
 <link
