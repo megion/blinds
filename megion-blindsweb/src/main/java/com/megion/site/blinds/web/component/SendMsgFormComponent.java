@@ -25,8 +25,6 @@ import com.megion.site.blinds.model.form.SendMsgFormUI;
 import com.megion.site.blinds.service.SendMsgFormService;
 import com.megion.site.blinds.web.validator.SendMsgFormValidator;
 import com.megion.site.core.model.EmailHeader;
-import com.megion.site.core.model.yandex.cleanweb.CheckSpam;
-import com.megion.site.core.model.yandex.cleanweb.CheckSpamResult;
 import com.megion.site.core.model.yandex.cleanweb.GetCaptchaResult;
 import com.megion.site.core.service.MailService;
 import com.megion.site.core.service.YandexCaptchaService;
@@ -63,18 +61,18 @@ public class SendMsgFormComponent {
 			// проверить на спам. Данная проверка сейчас используется только для
 			// получения id проверки. В будущем можно избавить добросовестных
 			// пользователей от ввода Captcha.
-			CheckSpam checkSpam = new CheckSpam(
-					formData.getName(),
-					"Сообщение",
-					formData.getMessage());
-			CheckSpamResult checkSpamResult = yandexCaptchaService.checkSpam(
-					checkSpam, formDialog.getYandexKey(),
-					request);
-			model.put("checkSpamResult", checkSpamResult);
+			//CheckSpam checkSpam = new CheckSpam(
+					//formData.getName(),
+					//"Сообщение",
+					//formData.getMessage());
+			//CheckSpamResult checkSpamResult = yandexCaptchaService.checkSpam(
+					//checkSpam, formDialog.getYandexKey(),
+					//request);
+			//model.put("checkSpamResult", checkSpamResult);
 
 			// получить Captcha всегда в независимости от проверки выше
 			GetCaptchaResult captchaResult = yandexCaptchaService.getCaptcha(
-					checkSpamResult, formDialog.getYandexKey());
+					null, formDialog.getYandexKey());
 			model.put("getCaptchaResult", captchaResult);
 
 			if ("POST".equals(request.getMethod())) {
