@@ -20,7 +20,7 @@
 				</div>
 				<div class="promo-block">
 					<cms:area name="promosArea"
-						components="megion-site:components/textPromo,megion-site:components/promo,standard-templating-kit:components/content/stkTextImage,megion-site:components/imageOverlay" />
+						components="megion-site:components/textPromo,megion-site:components/promo,megion-site:components/imageOverlay,standard-templating-kit:components/content/stkTextImage" />
 				</div>
 			</div>
 			<div class="center-area">
